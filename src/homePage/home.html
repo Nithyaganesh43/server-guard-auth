@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="icon" href="https://res.cloudinary.com/dmini3yl9/image/upload/v1735054734/vpinzctzbjkprkqcv2p3.ico" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="welcomeMessage"></h1>
+        <button onclick="clearAllTokens()">Log Out</button>
+    </div>
+    <script>
+        async function fetchUserData() {
+            let attempts = 0;
+            const maxAttempts = 5;  
+            const retryDelay = 2000;  
+
+            while (attempts < maxAttempts) {
+                try {
+                    const response = await axios.get(`https://ng-dmcz.onrender.com/getUserCountAndName?tt=${localStorage.getItem('tt')}`, { withCredentials: true });
+                    const { count, name } = response.data;
+ 
+                    const suffixes = ["th", "st", "nd", "rd"];
+                    const v = count % 100;
+                    const ordinalSuffix = suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0];
+ 
+                    document.getElementById('welcomeMessage').textContent = `Thank you ${name}, you are my ${count}${ordinalSuffix} user.`;
+                    return;  
+                } catch (error) {
+                    attempts++; 
+                    await new Promise(resolve => setTimeout(resolve, retryDelay));  
+                }
+            }
+ 
+            document.getElementById('welcomeMessage').textContent = " ";
+        }
+
+      async  function clearAllTokens() {
+            await axios.get(`https://ng-dmcz.onrender.com/logout`,
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+            window.location.href = `https://ng-dmcz.onrender.com`;
+        })
+        .catch(error => {
+            setTimeout(()=>{
+                clearAllTokens();
+            },1000);
+            
+        });
+             
+        }
+        
+
+        fetchUserData();
+    </script>
+</body><footer style="position:fixed; bottom:0; width:100%; background-color:rgba(0, 0, 0, 0.6); color:#fff; text-align:center; padding:20px;">
+  <p style="margin:0; font-size:16px;">&copy; 2024 Auth System by Nithya Ganesh</p>
+  <div style="display:flex; justify-content:center; align-items:center; margin-top:10px; gap:20px; flex-wrap:wrap;">
+    <a href="https://www.instagram.com/i_am_nithyaganesh?igsh=cm44eXo4bTluN2Y1" target="_blank" style="text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" class="logo">
+    </a>
+    <a href="https://github.com/Nithyaganesh43" target="_blank" style="text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub" class="logo">
+    </a>
+    <a href="https://www.linkedin.com/in/nithyaganesh43?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn" class="logo">
+    </a>
+    <a href="https://wa.me/919042421622" target="_blank" style="text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="logo">
+    </a>
+  </div>
+</footer>
+
+<style>
+  .logo {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .logo:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  }
+</style>
+
+</html>
