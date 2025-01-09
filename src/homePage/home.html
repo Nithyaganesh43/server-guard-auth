@@ -67,7 +67,7 @@
       }
 
       try {
-        const res = await axios.get(`http://localhost:3000/markethealers/auth/getUserInfo?id=${id}`);
+        const res = await axios.get(`https://server.markethealers.com/markethealers/auth/getUserInfo?id=${id}`);
         const user = res.data;
 console.log(user)
         document.getElementById('welcomeMessage').textContent = `Welcome, ${user.fullName}`;
@@ -78,11 +78,11 @@ console.log(user)
 
     async function clearAllTokens() {
       try {
-        await axios.get(`http://localhost:3000/markethealers/auth/logout`, {
+        await axios.get(`https://server.markethealers.com/markethealers/auth/logout`, {
           withCredentials: true,
           headers: { 'Content-Type': 'application/json' }
         });
-        window.location.href = `http://localhost:3000/markethealers/auth/`;
+        window.location.href = `https://server.markethealers.com/markethealers/auth/`;
       } catch (error) {
         setTimeout(clearAllTokens, 1000);
       }

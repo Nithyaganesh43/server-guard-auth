@@ -1,10 +1,10 @@
 function login() {
     
-    window.location.href = `http://localhost:3000/markethealers/auth/login`;
+    window.location.href = `https://server.markethealers.com/markethealers/auth/login`;
 }
 
 function signup() {
     
-    window.location.href = `http://localhost:3000/markethealers/auth/signup`;
+    window.location.href = `https://server.markethealers.com/markethealers/auth/signup`;
 }
  

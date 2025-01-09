@@ -63,7 +63,7 @@ window.onload = async function () {
     if (password === confirmPassword) {
       await axios
         .post(
-          'http://localhost:3000/markethealers/auth/signupSuccessful',
+          'https://server.markethealers.com/markethealers/auth/signupSuccessful',
           { fullName, userName, password, email, platform },
           {
             withCredentials: true,
@@ -75,7 +75,7 @@ window.onload = async function () {
         .then((response) => {
           alert(response.data.message);
           window.location.href =
-            'http://localhost:3000/markethealers/auth/home';
+            'https://server.markethealers.com/markethealers/auth/home';
         })
         .catch((error) => {
           alert(error.response?.data?.message || 'An error occurred');

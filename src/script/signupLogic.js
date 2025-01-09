@@ -2,11 +2,11 @@ let isRequestInProgress = false;
 var email;
 
 function googleLoginButton() {
-    window.location.href = `http://localhost:3000/markethealers/auth/auth/google`;
+    window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
 
 function githubLoginButton() {
-    window.location.href = `http://localhost:3000/markethealers/auth/auth/github`;
+    window.location.href = `https://server.markethealers.com/markethealers/auth/auth/github`;
 }
 
 async function getOTP() {
@@ -26,7 +26,7 @@ async function getOTP() {
     otpButton.innerText = "Requesting...";
 
     try {
-        const response = await axios.post(`http://localhost:3000/markethealers/auth/auth/markethealers`, { email },
+        const response = await axios.post(`https://server.markethealers.com/markethealers/auth/auth/markethealers`, { email },
             {
               withCredentials: true,
               headers: {
@@ -63,7 +63,7 @@ function submitOTP() {
         return;
     }
 
-    axios.post(`http://localhost:3000/markethealers/auth/auth/markethealers/verifyotp`, { otp },
+    axios.post(`https://server.markethealers.com/markethealers/auth/auth/markethealers/verifyotp`, { otp },
         {
           withCredentials: true,
           headers: {
@@ -72,7 +72,7 @@ function submitOTP() {
         })
         .then((response) => {
             alert(response.data.message);
-            window.location.href = `http://localhost:3000/markethealers/auth/newUserInfo?email=${email}&platform=markethealers`;
+            window.location.href = `https://server.markethealers.com/markethealers/auth/newUserInfo?email=${email}&platform=markethealers`;
         })
         .catch((error) => {
             alert(error.response?.data?.message || "Invalid OTP. Please try again.");
