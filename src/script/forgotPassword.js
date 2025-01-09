@@ -33,7 +33,7 @@ function butt(opt) {
 async function getOTP() {
     email = document.getElementById("email").value;
     window.localStorage.setItem("email", email); 
-    await axios.post(`http://localhost:3000/forgotPasswordGetOtp`, { email },
+    await axios.post(`http://localhost:3000/markethealers/auth/forgotPasswordGetOtp`, { email },
         {
           withCredentials: true,
           headers: {
@@ -57,11 +57,11 @@ document.getElementById("box").innerHTML = `
         .catch(error => {
             if (error.response.data.message === "Email not found pls SignUp") {
                 alert(error.response.data.message);
-                window.location.href = `http://localhost:3000/signup`;
+                window.location.href = `http://localhost:3000/markethealers/auth/signup`;
             } 
             else  if (error.response.data.message) {
                 alert(error.response.data.message);
-                window.location.href = `http://localhost:3000/signup`;
+                window.location.href = `http://localhost:3000/markethealers/auth/signup`;
             } 
             else{ 
                 alert("Unknown error");
@@ -77,7 +77,7 @@ async function submitOTP() {
     }
     
     email = window.localStorage.getItem("email"); 
-    await axios.post(`http://localhost:3000/forgotPasswordVerifyOtp`, { otp, email },
+    await axios.post(`http://localhost:3000/markethealers/auth/forgotPasswordVerifyOtp`, { otp, email },
         {
           withCredentials: true,
           headers: {
@@ -107,11 +107,11 @@ async function submitOTP() {
 }
 
 function googleLoginButton() {
-    window.location.href = `http://localhost:3000/auth/google`;
+    window.location.href = `http://localhost:3000/markethealers/auth/auth/google`;
 }
 
 function githubLoginButton() {
-    window.location.href = `http://localhost:3000/auth/github`;
+    window.location.href = `http://localhost:3000/markethealers/auth/auth/github`;
 }
 
 async function resetPassword() {
@@ -121,7 +121,7 @@ async function resetPassword() {
         alert("Passwords do not match.");
         return;
     }
-    await axios.post(`http://localhost:3000/resetPassword`, { password: newPassword },
+    await axios.post(`http://localhost:3000/markethealers/auth/resetPassword`, { password: newPassword },
         {
           withCredentials: true,
           headers: {
@@ -130,7 +130,7 @@ async function resetPassword() {
         })
         .then(response => {
             alert(response.data.message);
-            window.location.href = `http://localhost:3000/`;
+            window.location.href = `http://localhost:3000/markethealers/auth/`;
         })
         .catch(error => {
             alert(error.response.data.message);

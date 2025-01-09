@@ -6,7 +6,7 @@ async function login() {
             alert("Username and password must be at least 8 characters");
             return;
         }
-        await axios.post(`http://localhost:3000/userLogedIn`, { userName, password },
+        await axios.post(`http://localhost:3000/markethealers/auth/userLogedIn`, { userName, password },
             {
               withCredentials: true,
               headers: {
@@ -14,7 +14,7 @@ async function login() {
               }
             })
             .then(() => {
-                location.href = `http://localhost:3000/`;
+                location.href = `http://localhost:3000/markethealers/auth/`;
             })
             .catch(() => {
                 alert("Login failed");
@@ -31,13 +31,13 @@ document.addEventListener("keydown", (e) => {
 });
 
 function forgotPassword() {
-    location.href = `http://localhost:3000/forgotPassword`;
+    location.href = `http://localhost:3000/markethealers/auth/forgotPassword`;
 }
 
 function googleLoginButton() {
-    window.location.href = `http://localhost:3000/auth/google`;
+    window.location.href = `http://localhost:3000/markethealers/auth/auth/google`;
 }
 
 function githubLoginButton() {
-    window.location.href = `http://localhost:3000/auth/github`;
+    window.location.href = `http://localhost:3000/markethealers/auth/auth/github`;
 }
