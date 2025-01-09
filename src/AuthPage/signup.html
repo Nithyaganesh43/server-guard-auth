@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication</title>
-    <link rel="icon" href="https://res.cloudinary.com/dmini3yl9/image/upload/v1735054734/vpinzctzbjkprkqcv2p3.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="../styles/signup.css">
+    <link rel="icon" href="https://res.cloudinary.com/dmini3yl9/image/upload/v1735054734/vpinzctzbjkprkqcv2p3.ico"
+        type="image/x-icon">
+    <link rel="stylesheet" href="../styles/index.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
-    <form onsubmit="return false;"> 
-        <h1> Signup</h1>
-        <div id="signupBOX">
-            <div id="userPassword">
-                <input type="email" id="email" placeholder="Email" required>
-            </div>
-            <button type="button" onclick="getOTP()" id="otpButton">Get OTP</button>
-<h2 id="or">---or---</h2>
-            <div class="social-login">
-                <img onclick="googleLoginButton()" 
-                     src="https://res.cloudinary.com/dmini3yl9/image/upload/v1730510883/Google_logo_without_tick_jiu9v7.png" 
-                     id="google_logo" alt="Login with Google">
-                
-                
-            </div>
+    <div class="app">
+        <div class="container login">
+            <h1>Signup</h1>
+            <form onsubmit="return false;">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <button type="button" onclick="getOTP()" id="otpButton">Get OTP</button>
+                <div class="divider"><span>or</span></div>
+                <div class="social-login">
+                    <img onclick="googleLoginButton()"
+                        src="https://res.cloudinary.com/dmini3yl9/image/upload/v1730510883/Google_logo_without_tick_jiu9v7.png"
+                        id="google_logo" alt="Login with Google">
+                </div>
+            </form>
         </div>
-    </form>
-</body> 
- 
-<script src="../script/signupLogic.js"></script>
+    </div>
+    <script src="../script/signupLogic.js"></script>
+</body>
+
 </html>

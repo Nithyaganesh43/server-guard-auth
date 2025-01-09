@@ -7,55 +7,18 @@
   <title>Welcome Page</title>
   <link rel="icon" href="https://res.cloudinary.com/dmini3yl9/image/upload/v1735054734/vpinzctzbjkprkqcv2p3.ico"
     type="image/x-icon">
-
+  <link rel="stylesheet" href="../styles/index.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-
-    .container {
-      text-align: center;
-      background-color: #fff;
-      padding: 20px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      font-size: 28px;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      color: #fff;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 10px 5px;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1 id="welcomeMessage">Loading...</h1>
-    <button onclick="clearAllTokens()">Log Out</button>
+  <div class="app">
+    <div class="container">
+      <h1 id="welcomeMessage">Loading...</h1>
+      <button onclick="clearAllTokens()">Log Out</button>
+    </div>
   </div>
+
   <script>
     async function fetchUserInfo() {
       const params = new URLSearchParams(window.location.search);
@@ -69,10 +32,15 @@
       try {
         const res = await axios.get(`https://server.markethealers.com/markethealers/auth/getUserInfo?id=${id}`);
         const user = res.data;
-console.log(user)
-        document.getElementById('welcomeMessage').textContent = `Welcome, ${user.fullName}`;
+        console.log(user);
+        if (user && user.fullName) {
+          document.getElementById('welcomeMessage').textContent = `Welcome, ${user.fullName}`;
+        } else {
+          document.getElementById('welcomeMessage').textContent = 'User not found.';
+        }
       } catch (error) {
         document.getElementById('welcomeMessage').textContent = 'Error fetching user data.';
+        console.error(error);
       }
     }
 
@@ -84,7 +52,8 @@ console.log(user)
         });
         window.location.href = `https://server.markethealers.com/markethealers/auth/`;
       } catch (error) {
-        setTimeout(clearAllTokens, 1000);
+        console.error('Error during logout:', error);
+        setTimeout(clearAllTokens, 1000); // Retry on failure
       }
     }
 
