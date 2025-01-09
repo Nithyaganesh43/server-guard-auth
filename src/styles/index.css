@@ -85,7 +85,7 @@ button {
   background: #5264AE;
   font-size: 17px;
   font-weight: 500;
-  margin-top: 5px;
+  margin-top: 25px;
   color: #181818;
   border: 3px solid #5264AE;
   border-radius: 8px;
@@ -315,7 +315,7 @@ input[type="text"], input[type="password"], input[type="email"] {
  font-size: 14px;
  padding: 10px 10px 10px 5px;
  display: block;
- width: 200px;
+ width: 250px;
  border: none;
  border-bottom: 1px solid #515151;
  background: transparent;
@@ -347,7 +347,7 @@ label {
 .bar {
  position: relative;
  display: block;
- width: 200px;
+ width: 250px;
 }
 
 .bar:before, .bar:after {
@@ -448,4 +448,10 @@ label {
   .button.google {
     max-width: 100%;
   }
+}
+#authBtn{ 
+  position: relative;
+  left: -15%;
+  padding: 0;
+  margin: 0;
 }
