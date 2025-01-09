@@ -41,7 +41,7 @@ async function getOTP() {
     <span class="highlight"></span>
     <span class="bar"></span>
     <label for="otp">Enter Your 6-digit OTP</label>
-</div>
+</div> <br>
 <div class="group">
     <button type="button" onclick="submitOTP()" class="button">Submit OTP</button>
 </div>
@@ -62,7 +62,17 @@ async function getOTP() {
         isRequestInProgress = false;
     }
 }
+  document.getElementById('signupBOX').innerHTML = `
+  <div class="group" >
+    <input required="" type="text" id="otp" class="input">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label for="otp">Enter Your 6-digit OTP</label>
+    <button style="width:150px; left:20%" type="button" onclick="submitOTP()" class="button">Submit OTP</button>
+</div>
 
+
+        `;
 function submitOTP() {
     const otp = document.getElementById("otp")?.value;
 
