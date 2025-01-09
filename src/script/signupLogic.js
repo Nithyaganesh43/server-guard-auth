@@ -35,9 +35,17 @@ async function getOTP() {
             });
         alert(response.data.message);
 
-        document.getElementById("signupBOX").innerHTML = `
-            <input type="text" id="otp" placeholder="Enter Your 6-digit OTP" required>
-            <button type="button" onclick="submitOTP()">Submit OTP</button>
+        document.getElementById('signupBOX').innerHTML = `
+            <div class="group">
+    <input required="" type="text" id="otp" class="input">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label for="otp">Enter Your 6-digit OTP</label>
+</div>
+<div class="group">
+    <button type="button" onclick="submitOTP()" class="button">Submit OTP</button>
+</div>
+
         `;
 
         document.getElementById("otp").addEventListener("keydown", function (event) {

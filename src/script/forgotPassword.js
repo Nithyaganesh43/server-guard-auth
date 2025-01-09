@@ -44,13 +44,19 @@ async function getOTP() {
             alert(response.data.message);
             operation = "submit";
            
-document.getElementById("box").innerHTML = `
+document.getElementById('box').innerHTML = `
 <h2>Otp sent to ${email}</h2>
-<h3> Kindly check your inbox or spam</h3>
-<div class="input-container">
-    <input type="text" id="otp" placeholder="Enter Your 6-digit OTP" required>
+<h3>Kindly check your inbox or spam</h3>
+<div class="group">
+    <input required="" type="text" id="otp" class="input">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label for="otp">Enter Your 6-digit OTP</label>
+</div>
+<div class="group">
     <button type="button" onclick="submitOTP()" id="butt">Submit OTP</button>
 </div>
+
 `;
         
         })
@@ -87,15 +93,26 @@ async function submitOTP() {
         .then(response => {
             alert(response.data.message);
             operation = "reset";
-            document.getElementById("box").innerHTML = `
-                <form id="resetForm">
-                    <h1>Reset Password</h1>
-                    <div class="input-group">
-                        <input type="password" id="newPassword" placeholder="New Password" minlength="8" required>
-                        <input type="password" id="confirmPassword" placeholder="Confirm Password" minlength="8" required>
-                    </div>
-                    <button type="button" onclick="resetPassword()" id="reset">Reset Password</button>
-                </form>
+            document.getElementById('box').innerHTML = `
+              <form id="resetForm">
+    <h1>Reset Password</h1>
+    <div class="group">
+        <input required="" type="password" id="newPassword" class="input" minlength="8">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label for="newPassword">New Password</label>
+    </div>
+    <div class="group">
+        <input required="" type="password" id="confirmPassword" class="input" minlength="8">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label for="confirmPassword">Confirm Password</label>
+    </div>
+    <div class="group">
+        <button type="button" onclick="resetPassword()" id="reset">Reset Password</button>
+    </div>
+</form>
+
             `;
             window.localStorage.setItem("email", "");
         })
