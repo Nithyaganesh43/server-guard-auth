@@ -4,7 +4,7 @@ function myAlert( icon, title) {
     position: 'top',
     icon: icon,
     title: title,
-    timer: 3000,
+    timer: 5000,
     timerProgressBar: true,
     allowOutsideClick: false,
     allowEscapeKey: false,
@@ -27,7 +27,15 @@ function myAlert( icon, title) {
     },
   });
 }
+function login(){
+   window.location.href = `https://server.markethealers.com/markethealers/auth/login`;
 
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    document.querySelector('.btnClick').click();
+  }
+});
 // my myAlert("error", 'warning', 'hello world'); // error , success
 
 let isRequestInProgress = false;
@@ -76,7 +84,7 @@ async function getOTP() {
     <span class="highlight"></span>
     <span class="bar"></span>
     <label for="otp">Enter Your 6-digit OTP</label>
-    <button style="width:150px; left:20%" type="button" onclick="submitOTP()" class="button">Submit OTP</button>
+    <button style="width:150px; left:20%" type="button" onclick="submitOTP()" class="button btnClick">Submit OTP</button>
 </div>
 
         `;

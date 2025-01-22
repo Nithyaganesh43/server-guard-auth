@@ -1,10 +1,10 @@
-function myAlert( icon, title) {
+function myAlert(icon, title) {
   Swal.fire({
     toast: true,
     position: 'top',
     icon: icon,
     title: title,
-    timer: 3000,
+    timer: 5000,
     timerProgressBar: true,
     allowOutsideClick: false,
     allowEscapeKey: false,
@@ -27,9 +27,6 @@ function myAlert( icon, title) {
     },
   });
 }
-
-// myAlert( 'warning', 'hello world'); // error , success
-
 window.onload = async function () {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -84,6 +81,53 @@ window.onload = async function () {
       }
     });
   });
+  function validateInput(fullName, userName, password, confirmPassword) {
+    if (fullName.length < 3) {
+      myAlert('error', 'Full name must be at least 3 characters long.');
+      return false;
+    }
+    if (fullName.length > 50) {
+      myAlert('error', 'Full name cannot exceed 50 characters.');
+      return false;
+    }
+
+    if (userName.length < 7) {
+      myAlert('error', 'Username must be at least 7 characters long.');
+      return false;
+    }
+    if (userName.length > 50) {
+      myAlert('error', 'Username cannot exceed 50 characters.');
+      return false;
+    }
+ 
+
+    if (password.length < 7) {
+      myAlert('error', 'Password must be at least 7 characters long.');
+      return false;
+    }
+    if (password.length > 50) {
+      myAlert('error', 'Password cannot exceed 50 characters.');
+      return false;
+    }
+    if (!/[A-Z]/.test(password)) {
+      myAlert(
+        'error',
+        'Password must include at least one uppercase letter.'
+      );
+      return false;
+    }
+    if (!/[0-9]/.test(password)) {
+      myAlert('error', 'Password must include at least one number.');
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      myAlert('error', 'Passwords do not match. Please try again.');
+      return false;
+    }
+
+    return true;
+  }
 
   document.getElementById('submit-button').onclick = async function (event) {
     event.preventDefault();
@@ -92,7 +136,7 @@ window.onload = async function () {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    if (password === confirmPassword) {
+    if (validateInput(fullName, userName, password, confirmPassword)) {
       await axios
         .post(
           'https://server.markethealers.com/markethealers/auth/signupSuccessful',
@@ -105,15 +149,22 @@ window.onload = async function () {
           }
         )
         .then((response) => {
-           myAlert('success', response.data.message);
+          myAlert('success', response.data.message);
           window.location.href =
             'https://server.markethealers.com/markethealers/auth/home';
         })
         .catch((error) => {
-           myAlert("error", error.response?.data?.message || 'An error occurred');
+          myAlert(
+            'error',
+            error.response?.data?.message || 'An error occurred'
+          );
         });
-    } else {
-       myAlert("error", 'Please make sure all fields are filled correctly.');
     }
   };
 };
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    document.querySelector('.btnClick').click();
+  }
+});

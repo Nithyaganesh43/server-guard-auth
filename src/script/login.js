@@ -4,7 +4,7 @@ function myAlert( icon, title) {
     position: 'top',
     icon: icon,
     title: title,
-    timer: 3000,
+    timer: 5000,
     timerProgressBar: true,
     allowOutsideClick: false,
     allowEscapeKey: false,
@@ -27,16 +27,28 @@ function myAlert( icon, title) {
     },
   });
 }
-
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    document.querySelector('.btnClick').click();
+  }
+});
+function signup(){
+    location.href = `https://server.markethealers.com/markethealers/auth/signup/`;
+ 
+}
 // myAlert("error", 'warning', 'hello world'); // error , success
 
 async function login() {
   try {
     let userName = document.getElementById('userName').value;
     let password = document.getElementById('password').value;
-    if (userName.length < 8 || password.length < 8) {
-       myAlert("error", 'Username and password must be at least 8 characters');
+    if (userName.length < 7) {
+       myAlert("error", 'Username must be at least 7 characters');
       return;
+    }
+    if (password.length < 7){
+       myAlert('error', 'Password must be at least 7 characters');
+       return;
     }
     await axios
       .post(
@@ -73,7 +85,4 @@ function forgotPassword() {
 function googleLoginButton() {
   window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
-
-function githubLoginButton() {
-  window.location.href = `https://server.markethealers.com/markethealers/auth/auth/github`;
-}
+ 
