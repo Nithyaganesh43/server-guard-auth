@@ -1,5 +1,40 @@
 let email;
 let operation = "getotp";
+  function myAlert( icon, title) {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                icon: icon,
+                title: title,
+                timer: 3000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                showCloseButton: true,
+                customClass: {
+                    popup: 'custom-toast'
+                },
+                willOpen: () => { 
+                    const style = document.createElement('style');
+                    style.innerHTML = `
+                        .custom-toast {
+                            font-family: 'Arial', sans-serif;
+                            font-size: 12px;
+                            background-color: rgb(255, 255, 255);
+                            color: #262626;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            });
+        }
+
+        // myAlert("error","hello world");// error , success
+
+
+
+
 
 document.addEventListener("keydown", (e) => {
     const inputBox = document.querySelector("input:focus");
@@ -41,7 +76,7 @@ async function getOTP() {
           }
         })
         .then(response => {
-            alert(response.data.message);
+             myAlert('success', response.data.message);
             operation = "submit";
            
 document.getElementById('box').innerHTML = `
@@ -62,15 +97,15 @@ document.getElementById('box').innerHTML = `
         })
         .catch(error => {
             if (error.response.data.message === "Email not found pls SignUp") {
-                alert(error.response.data.message);
+                 myAlert("error", error.response.data.message);
                 window.location.href = `https://server.markethealers.com/markethealers/auth/signup`;
             } 
             else  if (error.response.data.message) {
-                alert(error.response.data.message);
+                 myAlert("error", error.response.data.message);
                 window.location.href = `https://server.markethealers.com/markethealers/auth/signup`;
             } 
             else{ 
-                alert("Unknown error");
+                 myAlert("error", "Something Went Wrong");
             }
         });
 }
@@ -78,7 +113,7 @@ document.getElementById('box').innerHTML = `
 async function submitOTP() {
     const otp = document.getElementById("otp").value;
     if (otp.length !== 6 || isNaN(otp)) {
-        alert("Please enter a valid OTP.");
+         myAlert("error", "Please enter a valid OTP.");
         return;
     }
     
@@ -91,7 +126,7 @@ async function submitOTP() {
           }
         })
         .then(response => {
-            alert(response.data.message);
+             myAlert('success', response.data.message);
             operation = "reset";
             document.getElementById('box').innerHTML = `
               <form id="resetForm">
@@ -119,7 +154,7 @@ async function submitOTP() {
         .catch(error => {
             let swe = error.response.data.message || error.response || error;
          
-            alert(swe);
+             myAlert("error", swe);
         });
 }
 
@@ -135,7 +170,7 @@ async function resetPassword() {
     const newPassword = document.getElementById("newPassword").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
     if (newPassword !== confirmPassword) {
-        alert("Passwords do not match.");
+         myAlert("error", "Passwords do not match.");
         return;
     }
     await axios.post(`https://server.markethealers.com/markethealers/auth/resetPassword`, { password: newPassword },
@@ -146,10 +181,10 @@ async function resetPassword() {
           }
         })
         .then(response => {
-            alert(response.data.message);
+             myAlert('success', response.data.message);
             window.location.href = `https://server.markethealers.com/markethealers/auth/`;
         })
         .catch(error => {
-            alert(error.response.data.message);
+             myAlert("error", error.response.data.message);
         });
 }

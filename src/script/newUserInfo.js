@@ -1,3 +1,35 @@
+function myAlert( icon, title) {
+  Swal.fire({
+    toast: true,
+    position: 'top',
+    icon: icon,
+    title: title,
+    timer: 3000,
+    timerProgressBar: true,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false,
+    showCloseButton: true,
+    customClass: {
+      popup: 'custom-toast',
+    },
+    willOpen: () => {
+      const style = document.createElement('style');
+      style.innerHTML = `
+                        .custom-toast {
+                            font-family: 'Arial', sans-serif;
+                            font-size: 12px;
+                            background-color: rgb(255, 255, 255);
+                            color: #262626;
+                        }
+                    `;
+      document.head.appendChild(style);
+    },
+  });
+}
+
+// myAlert( 'warning', 'hello world'); // error , success
+
 window.onload = async function () {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -73,15 +105,15 @@ window.onload = async function () {
           }
         )
         .then((response) => {
-          alert(response.data.message);
+           myAlert('success', response.data.message);
           window.location.href =
             'https://server.markethealers.com/markethealers/auth/home';
         })
         .catch((error) => {
-          alert(error.response?.data?.message || 'An error occurred');
+           myAlert("error", error.response?.data?.message || 'An error occurred');
         });
     } else {
-      alert('Please make sure all fields are filled correctly.');
+       myAlert("error", 'Please make sure all fields are filled correctly.');
     }
   };
 };
