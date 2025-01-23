@@ -82,6 +82,15 @@ window.onload = async function () {
     });
   });
   function validateInput(fullName, userName, password, confirmPassword) {
+    const checkbox = document.getElementById('Accept');
+
+    if (!checkbox.checked) {
+      myAlert(
+        'error',
+        'You must accept the terms and conditions and privacy policy.'
+      );
+      return false;
+    }
     if (fullName.length < 3) {
       myAlert('error', 'Full name must be at least 3 characters long.');
       return false;
@@ -99,7 +108,6 @@ window.onload = async function () {
       myAlert('error', 'Username cannot exceed 50 characters.');
       return false;
     }
- 
 
     if (password.length < 7) {
       myAlert('error', 'Password must be at least 7 characters long.');
@@ -110,10 +118,7 @@ window.onload = async function () {
       return false;
     }
     if (!/[A-Z]/.test(password)) {
-      myAlert(
-        'error',
-        'Password must include at least one uppercase letter.'
-      );
+      myAlert('error', 'Password must include at least one uppercase letter.');
       return false;
     }
     if (!/[0-9]/.test(password)) {

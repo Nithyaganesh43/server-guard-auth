@@ -7,7 +7,7 @@
     <title>Profile Page</title>
     <link rel="icon" href="https://res.cloudinary.com/dmini3yl9/image/upload/v1735054734/vpinzctzbjkprkqcv2p3.ico"
         type="image/x-icon">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../styles/index.css">
 </head>
@@ -21,45 +21,47 @@
                 <h1>Profile</h1>
 
                 <div class="input-group group">
-                    <input required="" type="text" class="input" id="fullName" name="fullname"  >
+                    <input type="text" class="input" id="fullName" name="fullname">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label for="fullName">Full Name</label>
                 </div>
-                
+
                 <div class="input-group group">
                     <input type="email" class="input" id="email" name="email" value="user@email.com" readonly>
-                    
+
                 </div>
-                
+
                 <div class="input-group group">
                     <input type="text" class="input" id="platform" name="platform" value="Market Healers" readonly>
-                     
+
                 </div>
-                
+
                 <div class="input-group group">
-                    <input required="" type="text" class="input" id="userName" name="username"  >
+                    <input type="text" class="input" id="userName" name="username">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label for="userName">Username</label>
                 </div>
-                
+
                 <div class="input-group group">
-                    <input required="" type="password" class="input" id="password" name="password"  >
+                    <input type="password" class="input" id="password" name="password">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label for="password">Password</label>
                 </div>
-                
+
                 <div class="input-group group">
-                    <input required="" type="password" class="input" id="confirm-password" name="confirm-password"
-                 >
+                    <input type="password" class="input" id="confirm-password" name="confirm-password">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label for="confirm-password">Confirm Password</label>
                 </div>
 
-             
+                <div id="Accept"><input type="checkbox" required>
+                    <p class="Accept"> Accept <a href="https://markethealers.com/termsofservice">terms and
+                            conditions</a> and <a href="https://markethealers.com/PrivacyPolicy">privacy policy</a></p>
+                </div>
                 <button type="button" id="submit-button" class="btnClick">
                     Submit
                     <div class="star-1">

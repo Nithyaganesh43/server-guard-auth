@@ -461,16 +461,6 @@ label {
   opacity: 0.8;
 }
 
-@media (max-width: 480px) {
-  .button.google {
-    max-width: 100%;
-    font-size: 12px;
-  }
-
-  body{
-    background-image:url(./bgm.svg);
-  }
-}
 #authBtn{ 
   position: relative;
   left: -15%;
@@ -483,4 +473,28 @@ label {
   margin-top: 10px;
   cursor: pointer;
 }
- 
+
+
+#Accept{ 
+  margin-top: 15px;
+  display: flex;
+}
+.Accept{
+  margin-left: 5px;
+  font-size: 12px;
+}
+@media (max-width: 480px) {
+  .button.google {
+    max-width: 100%;
+    font-size: 12px;
+  }
+
+  body{
+    background-image:url(./bgm.svg);
+  }
+
+  .Accept{
+  margin-left: 5px;
+  font-size: 10px;
+}
+}
