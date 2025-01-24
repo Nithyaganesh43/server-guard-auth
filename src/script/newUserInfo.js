@@ -83,7 +83,6 @@ window.onload = async function () {
   });
   function validateInput(fullName, userName, password, confirmPassword) {
     const checkbox = document.getElementById('Accept');
-
     if (!checkbox.checked) {
       myAlert(
         'error',
