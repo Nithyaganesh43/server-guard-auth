@@ -80,9 +80,9 @@ document.addEventListener('keydown', (e) => {
 function forgotPassword() {
   location.href = `https://server.markethealers.com/markethealers/auth/forgotPassword`;
 }
-
 function googleLoginButton() {
-  console.log("redirecting..")
-  window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
+  console.log('redirecting..');
+  window.location.replace(
+    `https://server.markethealers.com/markethealers/auth/auth/google`
+  );
 }
- 

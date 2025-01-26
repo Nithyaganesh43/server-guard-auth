@@ -42,9 +42,11 @@ let isRequestInProgress = false;
 var email;
 function googleLoginButton() {
   console.log('redirecting..');
-  window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
+  window.location.replace(
+    `https://server.markethealers.com/markethealers/auth/auth/google`
+  );
 }
- 
+
  
 
 async function getOTP() {
