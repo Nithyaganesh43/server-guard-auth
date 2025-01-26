@@ -40,12 +40,30 @@ function signup() {
 
 async function login() {
   try {
-    let userName = document.getElementById('userName').value;
-    let password = document.getElementById('password').value;
-    if (userName.length < 7) {
-      myAlert('error', 'Username must be at least 7 characters');
-      return;
-    }
+   let userName = document.getElementById('userName').value;
+   let password = document.getElementById('password').value;
+
+   if (userName.includes('@')) {
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(userName)) {
+       myAlert('error', 'Invalid email format');
+       return;
+     } 
+   } else {
+     const usernameRegex = /^[a-zA-Z0-9_]+$/;
+     if (!usernameRegex.test(userName)) {
+       myAlert(
+         'error',
+         'Username can only contain letters, numbers, or underscores'
+       );
+       return;
+     }
+     if (userName.length < 7) {
+       myAlert('error', 'Username must be at least 7 characters');
+       return;
+     } 
+   }
+
     if (password.length < 7) {
       myAlert('error', 'Password must be at least 7 characters');
       return;
