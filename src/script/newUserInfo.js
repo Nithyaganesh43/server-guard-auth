@@ -172,6 +172,4 @@ document.addEventListener('keydown', function (e) {
     document.querySelector('.btnClick').click();
   }
 });
-window.onload = function () {
-  document.querySelectorAll('input')[0].focus();
-};
+ 
