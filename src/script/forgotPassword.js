@@ -63,20 +63,21 @@ async function getOTP() {
       myAlert('success', response.data.message);
 
       document.getElementById('box').innerHTML = `
-    <div class="app">
-        <div class="container"><div id="submitOtp">
-<h3>Otp sent to ${email}</h3>
-<h3>Kindly check your inbox/spam</h3>
-<div class="group">
-    <input required="" type="text" id="otp" class="input">
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label for="otp">Enter Your 6-digit OTP</label>
-</div><br>
-<div class="group">
-    <button type="button" onclick="submitOTP()" id="butt" class="btnClick">Submit OTP</button>
-</div>
-</div></div>
+<div class="container">
+    <div id="submitOtp">
+        <h3>Otp sent to ${email}</h3>
+        <h3>Kindly check your inbox/spam</h3>
+        <div class="group">
+            <input required="" type="text" id="otp" class="input">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label for="otp">Enter Your 6-digit OTP</label>
+        </div><br>
+        <div class="group">
+            <button type="button" onclick="submitOTP()" id="butt" class="btnClick">Submit OTP</button>
+        </div>
+    </div>
+
 </div>
 `;
     })
