@@ -85,3 +85,6 @@ function forgotPassword() {
 function googleLoginButton(e) { e.preventDefault(); 
    location.href = `https://server.markethealers.com/markethealers/auth/auth/google` 
 }
+window.onload = function () {
+  document.querySelector('input').focus();
+};

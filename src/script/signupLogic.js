@@ -45,6 +45,7 @@ function googleLoginButton(e) {
   e.preventDefault();
   location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
+myAlert('info','Validating...');
 
 async function getOTP() {
   if (isRequestInProgress) return;
@@ -60,7 +61,7 @@ async function getOTP() {
 
   isRequestInProgress = true;
   otpButton.disabled = true;
-  otpButton.innerText = 'Requesting...';
+  otpButton.innerText = 'Wait';
 
   try {
     const response = await axios.post(
@@ -76,13 +77,15 @@ async function getOTP() {
      myAlert('success', response.data.message);
 
     document.getElementById('signupBOX').innerHTML = `
+    
+        <div class="container">
    <div class="group" >
     <input required="" type="text" id="otp" class="input">
     <span class="highlight"></span>
     <span class="bar"></span>
     <label for="otp">Enter Your 6-digit OTP</label>
     <button style="width:150px; left:20%" type="button" onclick="submitOTP()" class="button btnClick">Submit OTP</button>
-</div>
+</div></div> 
 
         `;
 
@@ -105,6 +108,7 @@ async function getOTP() {
 }
 
 function submitOTP() {
+  myAlert('info','Validating...')
   const otp = document.getElementById('otp')?.value;
 
   if (!otp || otp.length !== 6) {
@@ -137,3 +141,6 @@ document.getElementById('email').addEventListener('keydown', function (event) {
     getOTP();
   }
 });
+window.onload = function () {
+  document.querySelector('input').focus();
+};
