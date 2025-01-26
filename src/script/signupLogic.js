@@ -45,11 +45,11 @@ function googleLoginButton(e) {
   e.preventDefault();
   location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
-myAlert('info','Validating...');
 
 async function getOTP() {
   if (isRequestInProgress) return;
-
+  
+  myAlert('info','Validating...');
   const emailField = document.getElementById('email');
   const otpButton = document.getElementById('otpButton');
   email = emailField.value;
