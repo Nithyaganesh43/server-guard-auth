@@ -82,6 +82,7 @@ function forgotPassword() {
 }
 
 function googleLoginButton() {
+  console.log("redirecting..")
   window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
  

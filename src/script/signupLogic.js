@@ -40,14 +40,12 @@ document.addEventListener('keydown', function (e) {
 
 let isRequestInProgress = false;
 var email;
-
 function googleLoginButton() {
+  console.log('redirecting..');
   window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
-
-function githubLoginButton() {
-  window.location.href = `https://server.markethealers.com/markethealers/auth/auth/github`;
-}
+ 
+ 
 
 async function getOTP() {
   if (isRequestInProgress) return;
