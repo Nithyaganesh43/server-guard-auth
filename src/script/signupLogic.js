@@ -35,20 +35,14 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Enter') {
     document.querySelector('.btnClick').click();
   }
-});
-// my myAlert("error", 'warning', 'hello world'); // error , success
+}); 
 
 let isRequestInProgress = false;
 var email;
+
 function googleLoginButton() {
-  console.log('redirecting..');
-  window.location.replace(
-    `https://server.markethealers.com/markethealers/auth/auth/google`
-  );
+  location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
 }
-
- 
-
 async function getOTP() {
   if (isRequestInProgress) return;
 
