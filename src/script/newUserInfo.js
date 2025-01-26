@@ -139,7 +139,7 @@ window.onload = async function () {
     const userName = document.getElementById('userName').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
-
+myAlert('info','Validating');
     if (validateInput(fullName, userName, password, confirmPassword)) {
       await axios
         .post(
