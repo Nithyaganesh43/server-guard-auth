@@ -82,7 +82,7 @@ window.onload = async function () {
     });
   });
   function validateInput(fullName, userName, password, confirmPassword) {
-    const checkbox = document.getElementById('Accept');
+    const checkbox = document.getElementById('termsCheckbox');
     if (!checkbox.checked) {
       myAlert(
         'error',
