@@ -66,7 +66,7 @@ async function getOTP() {
 <div class="container">
     <div id="submitOtp">
         <h3>Otp sent to ${email}</h3>
-        <h3>Kindly check your inbox/spam</h3>
+        <h3>Kindly check your inbox or spam</h3>
         <div class="group">
             <input required="" type="text" id="otp" class="input">
             <span class="highlight"></span>
@@ -97,13 +97,13 @@ async function getOTP() {
 }
 
 async function submitOTP() {
+  myAlert('info', 'Validating...');
   const otp = document.getElementById('otp').value;
   if (otp.length !== 6 || isNaN(otp)) {
     myAlert('error', 'Please enter a valid OTP.');
     return;
   }
 
-  myAlert('info', 'Validating...');
   email = window.localStorage.getItem('email');
   await axios
     .post(
