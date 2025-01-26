@@ -41,7 +41,8 @@ let isRequestInProgress = false;
 var email;
 
 function googleLoginButton() {
-  location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
+  console.log('redirecitng..');
+  //  location.href = `https://server.markethealers.com/markethealers/auth/auth/google`
 }
 async function getOTP() {
   if (isRequestInProgress) return;
