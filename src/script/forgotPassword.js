@@ -118,7 +118,7 @@ async function submitOTP() {
     )
     .then((response) => {
       myAlert('success', response.data.message);
-      document.getElementById('box').innerHTML = `
+      document.getElementById('box').innerHTML = `<div class="container">
         <form id="resetForm">
     <h1>Reset Password</h1>
     <div class="group">
@@ -137,6 +137,7 @@ async function submitOTP() {
         <button type="button" onclick="resetPassword()"  class="btnClick" id="reset">Reset Password</button>
     </div>
 </form>
+</div>
       `;
       window.localStorage.setItem('email', '');
     })
@@ -147,6 +148,8 @@ async function submitOTP() {
 }
 
 async function resetPassword() {
+  
+  myAlert('info', 'Validating...');
   const newPassword = document.getElementById('newPassword').value;
   const confirmPassword = document.getElementById('confirmPassword').value;
   if (newPassword !== confirmPassword) {
