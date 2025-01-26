@@ -33,10 +33,9 @@ document.addEventListener('keydown', function (e) {
   }
 });
 function signup(){
-    location.href = `https://server.markethealers.com/markethealers/auth/signup/`;
+    location.href = `https://auth.markethealers.com/src/AuthPage/signup.html`;
  
-}
-// myAlert("error", 'warning', 'hello world'); // error , success
+} 
 
 async function login() {
   try {

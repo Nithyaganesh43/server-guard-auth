@@ -28,7 +28,7 @@ function myAlert( icon, title) {
   });
 }
 function login(){
-   window.location.href = `https://server.markethealers.com/markethealers/auth/login`;
+   window.location.href = `https://auth.markethealers.com/src/AuthPage/login.html`;
 
 }
 document.addEventListener('keydown', function (e) {
