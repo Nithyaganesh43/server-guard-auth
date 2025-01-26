@@ -40,6 +40,7 @@ function googleLoginButton() {
 }
 
 async function getOTP() {
+  myAlert('info','Validating...');
   email = document.getElementById('email').value;
   document.getElementById('email').value='';
   if (!email || !validateEmail(email)) {
@@ -61,7 +62,9 @@ async function getOTP() {
     .then((response) => {
       myAlert('success', response.data.message);
 
-      document.getElementById('box').innerHTML = `<div id="submitOtp">
+      document.getElementById('box').innerHTML = `
+    <div class="app">
+        <div class="container"><div id="submitOtp">
 <h3>Otp sent to ${email}</h3>
 <h3>Kindly check your inbox/spam</h3>
 <div class="group">
@@ -73,6 +76,7 @@ async function getOTP() {
 <div class="group">
     <button type="button" onclick="submitOTP()" id="butt" class="btnClick">Submit OTP</button>
 </div>
+</div></div>
 </div>
 `;
     })
@@ -80,13 +84,12 @@ async function getOTP() {
       if (error?.response?.data?.message) {
         myAlert(
           'error',
-          error.response.data.message + ' redirecting to Singup Page'
+          error.response?.data?.message + ' redirecting to Singup Page'
         );
         setTimeout(() => {
           window.location.href = `https://server.markethealers.com/markethealers/auth/signup`;
         }, 3000);
-      } else {
-        console.log(error);
+      } else { 
         myAlert('error', 'Something Went Wrong ');
       }
     });
