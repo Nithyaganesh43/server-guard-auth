@@ -50,14 +50,7 @@ async function login() {
        return;
      } 
    } else {
-     const usernameRegex = /^[a-zA-Z0-9_]+$/;
-     if (!usernameRegex.test(userName)) {
-       myAlert(
-         'error',
-         'Username can only contain letters, numbers, or underscores'
-       );
-       return;
-     }
+     
      if (userName.length < 7) {
        myAlert('error', 'Username must be at least 7 characters');
        return;
