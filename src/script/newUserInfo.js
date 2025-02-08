@@ -99,8 +99,8 @@ window.onload = async function () {
       return false;
     }
 
-    if (userName.length < 7) {
-      myAlert('error', 'Username must be at least 7 characters long.');
+    if (userName.length < 1) {
+      myAlert('error', 'Username must be at least 1 characters long.');
       return false;
     }
     if (userName.length > 50) {
@@ -108,8 +108,8 @@ window.onload = async function () {
       return false;
     }
 
-    if (password.length < 7) {
-      myAlert('error', 'Password must be at least 7 characters long.');
+    if (password.length < 1) {
+      myAlert('error', 'Password must be at least 1 characters long.');
       return false;
     }
     if (password.length > 50) {
