@@ -31,14 +31,9 @@ window.onload = async function () {
   const urlParams = new URLSearchParams(window.location.search);
 
   const platform = urlParams.get('platform');
-  const email = urlParams.get('email');
-  let fullname = urlParams.get('fullname');
-
-  if ('undefined' == fullname) {
-    fullname = '';
-  }
-
-  if (fullname) document.getElementById('fullName').value = fullname;
+  const email = urlParams.get('email'); 
+ 
+ 
   if (email) {
     const emailField = document.getElementById('email');
     emailField.value = email;
@@ -81,7 +76,7 @@ window.onload = async function () {
       }
     });
   });
-  function validateInput(fullName, userName, password, confirmPassword) {
+  function validateInput( userName, password, confirmPassword) {
     const checkbox = document.getElementById('termsCheckbox');
     if (!checkbox.checked) {
       myAlert(
@@ -90,15 +85,7 @@ window.onload = async function () {
       );
       return false;
     }
-    if (fullName.length < 3) {
-      myAlert('error', 'Full name must be at least 3 characters long.');
-      return false;
-    }
-    if (fullName.length > 50) {
-      myAlert('error', 'Full name cannot exceed 50 characters.');
-      return false;
-    }
-
+ 
     if (userName.length < 1) {
       myAlert('error', 'Username must be at least 1 characters long.');
       return false;
@@ -135,16 +122,15 @@ window.onload = async function () {
 
   document.getElementById('submit-button').onclick = async function (event) {
     event.preventDefault();
-    const fullName = document.getElementById('fullName').value;
     const userName = document.getElementById('userName').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 myAlert('info','Validating');
-    if (validateInput(fullName, userName, password, confirmPassword)) {
+    if (validateInput( userName, password, confirmPassword)) {
       await axios
         .post(
           'https://server-guard-server.onrender.com/markethealers/auth/signupSuccessful',
-          { fullName, userName, password, email, platform },
+          { userName, password, email, platform },
           {
             withCredentials: true,
             headers: {
