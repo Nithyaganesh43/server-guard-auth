@@ -63,7 +63,7 @@ async function login() {
     }
     await axios
       .post(
-        `https://server.markethealers.com/markethealers/auth/userLogedIn`,
+        `https://server-guard-server.onrender.com/markethealers/auth/userLogedIn`,
         { userName, password },
         {
           withCredentials: true,
@@ -73,7 +73,7 @@ async function login() {
         }
       )
       .then(() => {
-        location.href = `https://server.markethealers.com/markethealers/auth/`;
+        location.href = `https://server-guard-server.onrender.com/markethealers/auth/`;
       })
       .catch(() => {
         myAlert('error', 'Login failed');
@@ -90,11 +90,11 @@ document.addEventListener('keydown', (e) => {
 });
 
 function forgotPassword() {
-  location.href = `https://server.markethealers.com/markethealers/auth/forgotPassword`;
+  location.href = `https://server-guard-server.onrender.com/markethealers/auth/forgotPassword`;
 }
 
 function googleLoginButton(e) { e.preventDefault(); 
-   location.href = `https://server.markethealers.com/markethealers/auth/auth/google` 
+   location.href = `https://server-guard-server.onrender.com/markethealers/auth/auth/google` 
 }
 window.onload = function () {
   document.querySelector('input').focus();

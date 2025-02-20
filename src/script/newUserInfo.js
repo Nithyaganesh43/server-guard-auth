@@ -143,7 +143,7 @@ myAlert('info','Validating');
     if (validateInput(fullName, userName, password, confirmPassword)) {
       await axios
         .post(
-          'https://server.markethealers.com/markethealers/auth/signupSuccessful',
+          'https://server-guard-server.onrender.com/markethealers/auth/signupSuccessful',
           { fullName, userName, password, email, platform },
           {
             withCredentials: true,
@@ -155,7 +155,7 @@ myAlert('info','Validating');
         .then((response) => {
           myAlert('success', response.data.message);
           window.location.href =
-            'https://server.markethealers.com/markethealers/auth/home';
+            'https://server-guard-server.onrender.com/markethealers/auth/home';
         })
         .catch((error) => {
           myAlert(

@@ -36,7 +36,7 @@ function myAlert(icon, title) {
 }
 
 function googleLoginButton() {
-  window.location.href = `https://server.markethealers.com/markethealers/auth/auth/google`;
+  window.location.href = `https://server-guard-server.onrender.com/markethealers/auth/auth/google`;
 }
 
 async function getOTP() {
@@ -50,7 +50,7 @@ async function getOTP() {
   window.localStorage.setItem('email', email);
   await axios
     .post(
-      `https://server.markethealers.com/markethealers/auth/forgotPasswordGetOtp`,
+      `https://server-guard-server.onrender.com/markethealers/auth/forgotPasswordGetOtp`,
       { email },
       {
         withCredentials: true,
@@ -88,7 +88,7 @@ async function getOTP() {
           error.response?.data?.message + ' redirecting to Singup Page'
         );
         setTimeout(() => {
-          window.location.href = `https://server.markethealers.com/markethealers/auth/signup`;
+          window.location.href = `https://server-guard-server.onrender.com/markethealers/auth/signup`;
         }, 3000);
       } else { 
         myAlert('error', 'Something Went Wrong ');
@@ -107,7 +107,7 @@ async function submitOTP() {
   email = window.localStorage.getItem('email');
   await axios
     .post(
-      `https://server.markethealers.com/markethealers/auth/forgotPasswordVerifyOtp`,
+      `https://server-guard-server.onrender.com/markethealers/auth/forgotPasswordVerifyOtp`,
       { otp, email },
       {
         withCredentials: true,
@@ -162,7 +162,7 @@ async function resetPassword() {
   }
   await axios
     .post(
-      `https://server.markethealers.com/markethealers/auth/resetPassword`,
+      `https://server-guard-server.onrender.com/markethealers/auth/resetPassword`,
       { password: newPassword },
       {
         withCredentials: true,
@@ -173,7 +173,7 @@ async function resetPassword() {
     )
     .then((response) => {
       myAlert('success', response.data.message);
-      window.location.href = `https://server.markethealers.com/markethealers/auth/`;
+      window.location.href = `https://server-guard-server.onrender.com/markethealers/auth/`;
     })
     .catch((error) => {
       myAlert('error', error.response.data.message);
